@@ -170,7 +170,7 @@ while read entry; do SRCS+=( "$entry" ); done < <(
 }
 
 ## use 'pv' command if available
-PV=( pv -L "$LIMIT" -F"time elapsed [%t] | rate %r | total size [%b]" )
+PV=( pv -f -L "$LIMIT" -F"time elapsed [%t] | rate %r | total size [%b]" )
 [[ "$QUIET" == "1" ]] && PV=( cat ) || type pv &>/dev/null || {
   echo "INFO: install the 'pv' package in order to get a progress indicator"
   PV=( cat )

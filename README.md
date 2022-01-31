@@ -111,4 +111,14 @@ EOF
 chmod +x /etc/cron.daily/btrfs-sync
 ```
 
+Daily synchronization in LAN, mirror snapshot directory, log to file
+
+```
+cat > /etc/cron.daily/btrfs-sync <<EOF
+#!/bin/bash
+/usr/local/sbin/btrfs-sync --quiet --delete /home user@host:/path/to/snaps &> logfile.log
+EOF
+chmod +x /etc/cron.daily/btrfs-sync
+```
+
 More at [ownyourbits.com](https://ownyourbits.com/2018/03/09/easy-sync-of-btrfs-snapshots-with-btrfs-sync/)
